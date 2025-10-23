@@ -1,3 +1,5 @@
+import { app } from "./app.js";
+
 // require('dotenv').config({path: "./env"})
 import dotenv from "dotenv";
 dotenv.config();

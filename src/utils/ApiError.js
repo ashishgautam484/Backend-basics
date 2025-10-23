@@ -7,7 +7,7 @@ class ApiError extends Error { // Error is class defined by nodejs , that  class
         statusCode,
         message = "Spmething went wrong", //default message
         errors = [], //array for all errors occured
-        statck = ""
+        stack = ""
     ){ 
         super(message) //calling Error constructor , overriting
         this.statusCode = statusCode
@@ -15,6 +15,12 @@ class ApiError extends Error { // Error is class defined by nodejs , that  class
         this.message = message
         this.success = false;
         this.errors = errors
+
+        if(stack){
+            this.stack = stack
+        }else{
+            Error.captureStackTrace(this,this.constructor)
+        }
     }
 }
 
