@@ -19,7 +19,7 @@ app.use(cookieParser())
 import userRouter from "../src/routes/user.routes.js"
 
 //routes decleration
-app.use("/api/v1/users" , userRouter) // using middlewares, ->if user writes /users then the control is transfer to userRouters
+app.use("/api/v1/users" , userRouter) // using middlewares, ->if user open this path in local server then the control is transfer to userRouters
 
 //https://localhost:8000/api/v1/users/register
 

@@ -20,6 +20,7 @@ const uploadOnCloudinary = async (localFilePath) => {
         fs.unlinksync(localFilePath) //remove the temporary saved file at local server as upload operation got failed
     }
 }
+export {uploadOnCloudinary}
 
 // cloudinary.v2.uploader
 // .upload("dog.mp4", {
