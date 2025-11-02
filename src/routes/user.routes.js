@@ -7,7 +7,7 @@ const router = Router()
 router.route("/register").post(
     upload.fields([
         {
-            name: "avatar", maxCount: 1
+            name: "Avatar", maxCount: 2
         },//we are handling two files here : avatar and coverImage
         {
             name: "coverImage", maxCount: 1

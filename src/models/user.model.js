@@ -14,7 +14,7 @@ const UserSchema = new Schema(
             trim: true,
             index: true,
         },
-        Email: {
+        email: {
             type: String,
             required: true,
             unique: true,
@@ -29,7 +29,7 @@ const UserSchema = new Schema(
         },
         Avatar: {
             type: String, //cloundinery url will be used here
-            required: true,
+            required: false,
         },
         coverImage: {
             type: String,

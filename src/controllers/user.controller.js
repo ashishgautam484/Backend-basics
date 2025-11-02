@@ -28,7 +28,7 @@ const registerUser = asyncHandler( async (req,res) => {
         throw new ApiErrorapi(400, "All feilds are required")
     }
 
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{ username },{ email }]
     })
 
@@ -36,14 +36,21 @@ const registerUser = asyncHandler( async (req,res) => {
         throw new ApiErrorapi(409, "User already exists with this username or email")
     }
 
-    const avatarLocalPath = req.files?.avatar[0]?.path; //req.files is coming from multer middleware same as req.body from express json middleware
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    const avatarLocalPath = req.files?.Avatar[0]?.path; //req.files is coming from multer middleware same as req.body from express json middleware
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+    let coverImageLocalPath ;
+    if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
+        coverImageLocalPath = req.files.coverImage[0].path;
+    }
 
     if (!avatarLocalPath) {
         throw new ApiErrorapi(400, "Avatar image is required");
     }// checking avatar image is uploaded
 
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
+    console.log("Files received:", req.files);
+
+    const Avatar = await uploadOnCloudinary(avatarLocalPath);
     const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
     if (!avatarLocalPath) {
@@ -54,7 +61,7 @@ const registerUser = asyncHandler( async (req,res) => {
         fullname,
         email,
         username : username.toLowerCase(),
-        avatar : avatar.url,
+        avatar : Avatar?.url || "",
         coverImage : coverImage?.url || "",
         password,
     })
