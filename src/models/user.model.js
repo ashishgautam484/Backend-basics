@@ -79,7 +79,7 @@ UserSchema.methods.generateAccessToken = function(){
         }
     ) //sign method is used to make token in jwt
 }
-UserSchema.methods.generateAccessToken = function(){
+UserSchema.methods.generateRefreshToken = function(){
     jwt.sign(
         {
             _id: this.id,
