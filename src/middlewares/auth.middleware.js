@@ -1,5 +1,6 @@
-import { ApiErrorapi } from "../utils/ApiError.api";
-import { asyncHandler } from "../utils/asyncHandler";
+import { ApiErrorapi } from "../utils/ApiError.api.js";
+
+import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js";
 
@@ -28,3 +29,4 @@ export const verifyJWT = asyncHandler (async (req, res, next) => {
     }
 
 });
+
