@@ -91,4 +91,6 @@ UserSchema.methods.generateRefreshToken = function(){
     ) //sign method is used to make token in jwt
 }
 
+
+
 export const User = mongoose.model("User" , UserSchema)
